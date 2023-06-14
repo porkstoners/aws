@@ -26,7 +26,6 @@ aws ec2 describe-key-pairs --query 'KeyPairs[*].[KeyName]' --output table
 ## describe ec2 instances - output to table ##
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].[{"Instance ID": InstanceId, "Instance Type": InstanceType, "State": State.Name, "Availability Zone": Placement.AvailabilityZone, "Project": Tags[?Key==`Project`].Value | [0], "Owner": Tags[?Key==`Owner`].Value | [0]}]' --output table
 
-
 ## Describe AMIs - output to table ##
 aws ec2 describe-images --owners self --query 'Images[*].[{"Image ID": ImageId, "Name": Name, "Description": Description, "Creation Date": CreationDate}]' --output table
 
