@@ -1,0 +1,38 @@
+#### EC2 #### 
+
+## Describe commands ## 
+
+## Describe VPCs ##
+aws ec2 describe-vpcs
+
+## Describe Subnets ## 
+aws ec2 describe-subnets
+
+## Describe Security Groups ##
+aws ec2 describe-security-groups
+
+## Describe Key Pairs ##
+aws ec2 describe-key-pairs
+
+## Describe Instances ##
+aws ec2 describe-instances
+
+## Describe AMIs ##
+aws ec2 describe-images
+
+## describe Key Pairs and Output to Table ##
+aws ec2 describe-key-pairs --query 'KeyPairs[*].[KeyName]' --output table
+
+## describe ec2 instances - output to table ##
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[{"Instance ID": InstanceId, "Instance Type": InstanceType, "State": State.Name, "Availability Zone": Placement.AvailabilityZone, "Project": Tags[?Key==`Project`].Value | [0], "Owner": Tags[?Key==`Owner`].Value | [0]}]' --output table
+
+
+## Describe AMIs - output to table ##
+aws ec2 describe-images --owners self --query 'Images[*].[{"Image ID": ImageId, "Name": Name, "Description": Description, "Creation Date": CreationDate}]' --output table
+
+## describe ec2 instances - output to table ## 
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[{"Instance ID": InstanceId, "Instance Type": InstanceType, "State": State.Name, "Availability Zone": Placement.AvailabilityZone, "Project": Tags[?Key==`Project`].Value | [0], "Owner": Tags[?Key==`Owner`].Value | [0]}]' --output table
+
+## Describe AMIs - output to table ##
+aws ec2 describe-images --owners self --query 'Images[*].[{"Image ID": ImageId, "Name": Name, "Description": Description, "Creation Date": CreationDate}]' --output table
+
